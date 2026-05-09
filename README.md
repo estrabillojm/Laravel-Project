@@ -64,6 +64,9 @@ Extension to Install:
 - Laravel
 - PHP Intelephense
 
+    ### Optional
+        - You can also install SQLlite viewer in order to view your migrations directly to VS Code
+
 Go to Preference -> Settings -> Search for emmet -> Add a key value pair
 - key: blade | value: html
 
