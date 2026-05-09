@@ -56,3 +56,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## VS Code Setup
+
+Extension to Install:
+- Laravel Blade
+- Laravel
+- PHP Intelephense
+
+Go to Preference -> Settings -> Search for emmet -> Add a key value pair
+- key: blade | value: html
+
+
+
+## Project Setup
+- composer update
+- composer install
+
+# Local Server
+- If you're using HERD, just open herd application and navigate to browser with a url of crud_project.test
