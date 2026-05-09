@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Services\NinjaService;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,7 +13,9 @@ Route::get('/ninjas', function(){
         ['name' => 'Ken', 'skill' => 'Taijutsu', 'id' => 2, 'strength' => 65],
         ['name' => 'Hanzo', 'skill' => 'Genjutsu', 'id' => 3, 'strength' => 85]
     ];
-    $ninja_object = (object) $ninjas[0];
+    $ninjaService = new NinjaService();
+    $max_strength_ninja = $ninjaService->getStrongestNinja($ninjas);
+    $ninja_object = (object) $max_strength_ninja;
     return view('ninjas.index', ["greeting" => "Hello Ninjas", "ninjas" => $ninjas, "ninja_object" => $ninja_object]);
 });
 
