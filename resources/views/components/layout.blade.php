@@ -17,8 +17,8 @@
                     </div>
                     <nav class="flex flex-wrap items-center gap-3 text-sm text-slate-300">
                         <a href="/" class="rounded-full px-4 py-2 transition hover:bg-slate-700/80 hover:text-white">Home</a>
-                        <a href="/ninjas" class="rounded-full px-4 py-2 transition hover:bg-slate-700/80 hover:text-white">All Ninjas</a>
-                        <a href="/ninjas/create" class="rounded-full bg-cyan-500 px-4 py-2 font-semibold text-slate-950 transition hover:bg-cyan-400">Create Ninja</a>
+                        <a href="{{ route('ninjas.index') }}" class="rounded-full px-4 py-2 transition hover:bg-slate-700/80 hover:text-white">All Ninjas</a>
+                        <a href="{{ route('ninjas.create') }}" class="rounded-full bg-cyan-500 px-4 py-2 font-semibold text-slate-950 transition hover:bg-cyan-400">Create Ninja</a>
                     </nav>
                 </div>
             </header>
