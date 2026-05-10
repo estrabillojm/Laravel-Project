@@ -1,28 +1,39 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Services\NinjaService;
+use App\Http\Controllers\NinjaController;
+use App\Models\Ninja;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ninjas', function(){
-    $ninjas =[
-        ['name' => 'Ryu', 'skill' => 'Ninjutsu', 'id' => 1, 'strength' => 75],
-        ['name' => 'Ken', 'skill' => 'Taijutsu', 'id' => 2, 'strength' => 65],
-        ['name' => 'Hanzo', 'skill' => 'Genjutsu', 'id' => 3, 'strength' => 85]
-    ];
-    $ninjaService = new NinjaService();
-    $max_strength_ninja = $ninjaService->getStrongestNinja($ninjas);
-    $ninja_object = (object) $max_strength_ninja;
-    return view('ninjas.index', ["greeting" => "Hello Ninjas", "ninjas" => $ninjas, "ninja_object" => $ninja_object]);
+// NOTE: Named routes -> name() will not be used in REST API Laravel
+Route::group(['prefix' => 'ninjas'], function() {
+    Route::get('/', [NinjaController::class, 'index'])->name('ninjas.index');
+    Route::get('/create', [NinjaController::class, 'create'])->name('ninjas.create');
+    Route::get('/{id}', [NinjaController::class, 'show'])->name('ninjas.show');
 });
 
-Route::get('/ninjas/create', function(){
-    return view('ninjas.create');
-});
 
-Route::get('/ninjas/{id}', function($id){
-    return view('ninjas.show', ['id' => $id]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/test/{uuid}', function($uuid){
+
+    $ninjas = Ninja::findById($uuid);
+    return view('ninjas.show', ['id' => $uuid]);
 });
